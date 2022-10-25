@@ -1,0 +1,14 @@
+name: Deploy To Server
+on:
+  push:
+    branches:
+      - master
+jobs:
+  Docker-Compose-Build:
+    name: Build Image With Docker Compose
+    runs-on: self-hosted
+    steps:
+      - uses: actions/checkout@v3
+      - run:
+        docker compose down &&
+        docker compose up --build
