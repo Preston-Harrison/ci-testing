@@ -1,7 +1,6 @@
-FROM node:latest
-WORKDIR /usr/src
+FROM rust:1.60
+WORKDIR /usr/src/app
 COPY . .
-RUN ["yarn"]
-ENV PORT=8080
+RUN ["cargo", "build"]
 EXPOSE ${PORT}
-CMD [ "node", "/usr/src" ]
+CMD [ "/usr/src/app/target/debug/api" ]
